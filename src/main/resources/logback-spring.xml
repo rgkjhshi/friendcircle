@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <!--<property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] ${PID:-} %-5level %logger{39}.%M - %msg%n"/>-->
-
-    <!-- 这里面定义了 CONSOLE_LOG_PATTERN, FILE_LOG_PATTERN 等日志格式, 可参考DefaultLogbackConfiguration类 -->
+    <!-- 这里面定义了 CONSOLE_LOG_PATTERN, FILE_LOG_PATTERN 等日志格式, 可参考 DefaultLogbackConfiguration 类 -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
     <!-- ConsoleAppender 输出到控制台 -->
@@ -47,8 +45,8 @@
     <logger name="org.springframework" level="INFO"/>
 
     <root level="INFO">
-        <!--<appender-ref ref="infoAppender"/>-->
-        <!--<appender-ref ref="errorAppender"/>-->
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="errorAppender"/>
         <appender-ref ref="ConsoleAppender"/>
     </root>
 
