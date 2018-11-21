@@ -6,8 +6,8 @@
     <!-- 这里面定义了 CONSOLE_LOG_PATTERN, FILE_LOG_PATTERN 等日志格式, 可参考DefaultLogbackConfiguration类 -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
-    <!-- dddAppender 输出到控制台 -->
-    <appender name="dddAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- consoleAppender 输出到控制台 -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder charset="UTF-8">
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
@@ -51,7 +51,7 @@
     <root level="INFO">
         <appender-ref ref="infoAppender"/>
         <appender-ref ref="errorAppender"/>
-        <appender-ref ref="dddAppender"/>
+        <appender-ref ref="consoleAppender"/>
     </root>
 
 </configuration>
