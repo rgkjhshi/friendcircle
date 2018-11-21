@@ -1,5 +1,6 @@
 package com.mk.friendcircle.controller;
 
+import com.mk.friendcircle.annotation.Log;
 import com.mk.friendcircle.annotation.ThreadRename;
 import com.mk.friendcircle.vo.BaseResponse;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author song.shi
  * @since 2018-07-11
  */
+@Log
 @ThreadRename
 @RestController
 @RequestMapping(value = "/test/")

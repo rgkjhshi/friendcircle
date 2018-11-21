@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 /**
  * 线程重命名
  *
- * @author liqiang.jiang
- * @since 2017-07-24
+ * @author shisong
+ * @since 2018-11-21
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
