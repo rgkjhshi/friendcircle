@@ -49,7 +49,7 @@
     <root level="INFO">
         <appender-ref ref="infoAppender"/>
         <appender-ref ref="errorAppender"/>
-        <appender-ref ref="consoleAppender"/>
+        <!--<appender-ref ref="consoleAppender"/>-->
     </root>
 
 </configuration>
