@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mk.friendcircle.dao.UserInfoDao">
+
+    <!-- 通过字段名字映射 -->
+    <sql id="base_select">
+        SELECT
+        id             AS id,
+        user_id        AS userId,
+        nickname       AS nickname,
+        user_status    AS userStatus,
+        gender         AS gender,
+        avatar_url     AS avatarUrl,
+        mobile         AS mobile,
+        create_time    AS createTime,
+        update_time    AS updateTime
+        FROM user_info
+    </sql>
+
+    <!-- 查询条件 -->
+    <sql id="where_condition">
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="nickname != null">
+                AND nickname = #{nickname}
+            </if>
+            <if test="userStatus != null">
+                AND user_status = #{userStatus}
+            </if>
+            <if test="gender != null">
+                AND gender = #{gender}
+            </if>
+            <if test="avatarUrl != null">
+                AND avatar_url = #{avatarUrl}
+            </if>
+            <if test="mobile != null">
+                AND mobile = #{mobile}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="add" parameterType="UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="userStatus != null">
+                user_status,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="avatarUrl != null">
+                avatar_url,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="nickname != null">
+                #{nickname},
+            </if>
+            <if test="userStatus != null">
+                #{userStatus},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="avatarUrl != null">
+                #{avatarUrl},
+            </if>
+            <if test="mobile != null">
+                #{mobile},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 通过主键id更新 -->
+    <update id="updateById" parameterType="UserInfo">
+        UPDATE payment
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="userStatus != null">
+                user_status = #{userStatus},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="avatarUrl != null">
+                avatar_url = #{avatarUrl},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryOne" parameterType="UserInfo" resultType="UserInfo">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+    <select id="queryList" parameterType="UserInfo" resultType="UserInfo">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+</mapper>

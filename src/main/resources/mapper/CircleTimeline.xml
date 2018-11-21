@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mk.friendcircle.dao.CircleTimelineDao">
+
+    <!-- 通过字段名字映射 -->
+    <sql id="base_select">
+        SELECT
+        id             AS id,
+        user_id        AS userId,
+        article_id     AS articleId,
+        is_own         AS isOwn,
+        create_time    AS createTime
+        FROM circle_timeline
+    </sql>
+
+    <!-- 查询条件 -->
+    <sql id="where_condition">
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="articleId != null">
+                AND article_id = #{articleId}
+            </if>
+            <if test="isOwn != null">
+                AND is_own = #{isOwn}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="add" parameterType="CircleTimeline" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO circle_timeline
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="articleId != null">
+                article_id,
+            </if>
+            <if test="isOwn != null">
+                is_own,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="articleId != null">
+                #{articleId},
+            </if>
+            <if test="isOwn != null">
+                #{isOwn},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 通过主键id更新 -->
+    <update id="updateById" parameterType="CircleTimeline">
+        UPDATE payment
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="articleId != null">
+                article_id = #{articleId},
+            </if>
+            <if test="isOwn != null">
+                is_own = #{isOwn},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryOne" parameterType="CircleTimeline" resultType="CircleTimeline">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+    <select id="queryList" parameterType="CircleTimeline" resultType="CircleTimeline">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+</mapper>

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 /**
- * 配置类, 等同于原来的web.xml
+ * 配置类, 等同于原来的web.mapper
  *
  * @author song.shi
  * @since 2016-11-07
