@@ -11,7 +11,7 @@
         </encoder>
     </appender>
 
-    <!-- infoAppender -->
+    <!-- info日志 -->
     <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/info.log</file>
         <encoder charset="UTF-8">
@@ -27,7 +27,7 @@
         </rollingPolicy>
     </appender>
 
-    <!-- errorAppender -->
+    <!-- error日志 -->
     <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/error.log</file>
         <encoder charset="UTF-8">
@@ -36,8 +36,10 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" maxHistory="30" totalSizeCap="1GB">
-            <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>512MB</maxFileSize>
+            <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>
 
