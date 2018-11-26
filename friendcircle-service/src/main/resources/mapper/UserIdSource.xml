@@ -3,29 +3,8 @@
 
 <mapper namespace="com.mk.friendcircle.dao.mapper.UserIdSourceMapper">
 
-    <!-- 通过字段名字映射 -->
-    <sql id="base_select">
-        SELECT
-        id    AS id
-        FROM user_id_source
-    </sql>
-
-    <!-- 查询条件 -->
-    <sql id="where_condition">
-        <where>
-            <if test="id != null">
-                AND id = #{id}
-            </if>
-        </where>
-    </sql>
-
     <insert id="add" parameterType="UserIdSource" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user_id_source (id) VALUES (NULL);
     </insert>
-
-    <select id="queryOne" parameterType="UserIdSource" resultType="UserIdSource">
-        <include refid="base_select"/>
-        <include refid="where_condition"/>
-    </select>
 
 </mapper>
