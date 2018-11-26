@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @author shisong
- * @since 2018-11-21
+ * @since 2018-11-26
  */
-public interface UserInfoDao {
+public interface UserInfoMapper {
 
     /**
      * 添加记录

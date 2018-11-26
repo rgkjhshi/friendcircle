@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2018-11-21
  */
 @Mapper
-public interface UserIdSourceDao {
+public interface UserIdSourceMapper {
 
     /**
      * 添加记录
